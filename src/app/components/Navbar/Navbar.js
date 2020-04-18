@@ -14,12 +14,14 @@ class Template extends React.Component {
 		super(props);
 		this.state = {
 			anchorEl: null,
+			showDropdown: false,
 		};
 	}
 
 	languageToggler = (lang) => {
 		const {setLanguage} = this.props;
 		setLanguage(lang, () => {});
+		this.handleClose();
 	};
 
 	handleClick = (event) => {
@@ -27,7 +29,6 @@ class Template extends React.Component {
 	};
 
 	handleClose = (lang) => {
-		this.languageToggler(lang);
 		this.setState({anchorEl: null});
 	};
 
@@ -40,13 +41,17 @@ class Template extends React.Component {
 				<React.Fragment>
 					<TranslateIcon className={classes.langBtn} onClick={this.handleClick} />
 					<Menu
-						id="simple-menu"
+						id="languageMenu"
 						anchorEl={anchorEl}
 						keepMounted
 						open={Boolean(anchorEl)}
 						onClose={this.handleClose}>
-						<MenuItem onClick={() => this.handleClose("bn")}>বাংলা</MenuItem>
-						<MenuItem onClick={() => this.handleClose("en")}>English</MenuItem>
+						<MenuItem onClick={() => this.languageToggler("bn")} className={classes.langMenuItem}>
+							বাংলা
+						</MenuItem>
+						<MenuItem onClick={() => this.languageToggler("en")} className={classes.langMenuItem}>
+							English
+						</MenuItem>
 					</Menu>
 				</React.Fragment>
 			</div>
@@ -55,7 +60,7 @@ class Template extends React.Component {
 }
 
 Template.propTypes = {
-	classes: PropTypes.objectOf(PropTypes.object).isRequired,
+	classes: PropTypes.object.isRequired,
 };
 
 const ConsumerComponent = (props) => (

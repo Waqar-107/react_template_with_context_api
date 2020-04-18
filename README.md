@@ -1,3 +1,4 @@
 # a react template with context api
 
-the context-api part has not yet been completed, will finish it soon.
+1. the authContext maintains the auth and also the language of the site
+2. the navbar contains the language changing dropdown

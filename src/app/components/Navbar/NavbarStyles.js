@@ -14,21 +14,16 @@ const styles = (theme) => ({
 	langBtn: {
 		fontSize: "25px",
 		color: "white",
-	},
-
-	langMenu: {
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "center",
-		alignItems: "center",
-		alignContent: "center",
+		cursor: "pointer",
 	},
 
 	langMenuItem: {
-		paddingLeft: "10px",
-		paddingRight: "10px",
+		paddingLeft: "20px",
+		paddingRight: "20px",
 		paddingTop: "5px",
 		paddingBottom: "5px",
+
+		cursor: "pointer",
 	},
 });
 
