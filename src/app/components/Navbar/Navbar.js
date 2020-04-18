@@ -4,17 +4,12 @@ import PropTypes from "prop-types";
 
 import {AuthConsumer} from "../../stateHandlers/authContext";
 
-import Navbar from "../Navbar/Navbar";
-import styles from "./TemplateStyles";
+import styles from "./NavbarStyles";
 
 class Template extends React.Component {
 	render() {
-		const {classes, testVariable} = this.props;
-		return (
-			<div className={classes.mainBody}>
-				<Navbar />
-			</div>
-		);
+		const {classes} = this.props;
+		return <div className={classes.mainBody}></div>;
 	}
 }
 

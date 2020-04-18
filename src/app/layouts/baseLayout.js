@@ -8,7 +8,7 @@ import Template from "../components/Template/Template";
 const theme = createMuiTheme({
 	palette: {
 		colors: {
-			primary: "red",
+			primary: "grey",
 			secondary: "",
 			dark: "",
 			textDark: "",

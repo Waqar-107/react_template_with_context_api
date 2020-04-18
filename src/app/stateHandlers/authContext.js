@@ -10,7 +10,7 @@ export class AuthProvider extends React.Component {
 		this.state = {
 			isAuthenticated: false,
 			user: {},
-			testVariable: "waqar",
+			language: "bn",
 		};
 	}
 
@@ -29,6 +29,13 @@ export class AuthProvider extends React.Component {
 		this.setState({isAuthenticated, user});
 	};
 
+	setLanguage = (lang, cb) => {
+		this.setState({language: lang});
+		cb();
+	};
+
+	getLanguage = () => this.state.language;
+
 	render() {
 		return (
 			<AuthContext.Provider
@@ -36,6 +43,8 @@ export class AuthProvider extends React.Component {
 					...this.state,
 					logout: this.logout,
 					login: this.login,
+					getLanguage: this.getLanguage,
+					setLanguage: this.setLanguage,
 				}}>
 				{this.props.children}
 			</AuthContext.Provider>
