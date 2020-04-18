@@ -9,7 +9,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TranslateIcon from "@material-ui/icons/Translate";
 import styles from "./NavbarStyles";
 
-class Template extends React.Component {
+class Navbar extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -59,14 +59,12 @@ class Template extends React.Component {
 	}
 }
 
-Template.propTypes = {
+Navbar.propTypes = {
 	classes: PropTypes.object.isRequired,
 };
 
 const ConsumerComponent = (props) => (
-	<AuthConsumer>
-		{({setLanguage}) => <Template {...props} setLanguage={setLanguage} />}
-	</AuthConsumer>
+	<AuthConsumer>{({setLanguage}) => <Navbar {...props} setLanguage={setLanguage} />}</AuthConsumer>
 );
 
 export default withStyles(styles)(ConsumerComponent);
