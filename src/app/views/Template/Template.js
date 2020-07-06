@@ -6,7 +6,7 @@ import {AuthConsumer} from "../../stateHandlers/authContext";
 import * as translationBN from "../../../translations/bn";
 import * as translationEN from "../../../translations/en";
 
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../components/Navbar/Navbar";
 import styles from "./TemplateStyles";
 
 class Template extends React.Component {

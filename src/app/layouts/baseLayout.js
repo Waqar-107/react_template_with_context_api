@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {MuiThemeProvider, createMuiTheme} from "@material-ui/core/styles";
 
 import {AuthProvider} from "../stateHandlers/authContext";
-import Template from "../components/Template/Template";
+import Template from "../views/Template/Template";
 
 const theme = createMuiTheme({
 	palette: {
