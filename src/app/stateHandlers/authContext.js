@@ -14,11 +14,20 @@ export class AuthProvider extends React.Component {
 		};
 	}
 
-	componentDidMount() {}
+	checkAuth = () => {
+		let user = localStorage.getItem("user");
+		let jwtToken = localStorage.getItem("jwtToken");
+		console.log(user, jwtToken);
+
+		if (jwtToken !== undefined) {
+			this.setState({user, isAuthenticated: true});
+			return true;
+		} else return false;
+	};
 
 	login = (user) => {
 		this.setState({isAuthenticated: true});
-		this.setState({user});
+		this.setState({user: user});
 	};
 
 	logout = () => {
@@ -41,6 +50,7 @@ export class AuthProvider extends React.Component {
 			<AuthContext.Provider
 				value={{
 					...this.state,
+					checkAuth: this.checkAuth,
 					logout: this.logout,
 					login: this.login,
 					getLanguage: this.getLanguage,

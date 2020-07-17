@@ -10,7 +10,8 @@ class PrivateComponent extends Component {
 	};
 
 	componentDidMount() {
-		if (this.props.isAuthenticated) this.setState({status: true});
+		console.log(this.props.checkAuth());
+		if (this.props.checkAuth()) this.setState({status: true});
 		else this.setState({status: false});
 	}
 
@@ -25,7 +26,9 @@ class PrivateComponent extends Component {
 }
 
 const ConsumerComponent = (props) => (
-	<AuthConsumer>{({language}) => <PrivateComponent {...props} language={language} />}</AuthConsumer>
+	<AuthConsumer>
+		{({checkAuth}) => <PrivateComponent {...props} checkAuth={checkAuth} />}
+	</AuthConsumer>
 );
 
 export default ConsumerComponent;
