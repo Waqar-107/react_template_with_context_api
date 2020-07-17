@@ -1,5 +1,15 @@
 {
 	"template": {
 		"title": "And we'll die, we'll die together"
+	},
+
+	"signIn": {
+		"btn": "login",
+		"email": "email",
+		"password": "password"
+	},
+
+	"home": {
+		"title": "home-english"
 	}
 }

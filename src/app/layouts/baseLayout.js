@@ -3,7 +3,10 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import {MuiThemeProvider, createMuiTheme} from "@material-ui/core/styles";
 
 import {AuthProvider} from "../stateHandlers/authContext";
-import Template from "../views/Template/Template";
+import PrivateWrapper from "./privateWrapper";
+
+import SignIN from "../views/SignIn/signin";
+import Home from "../views/Home/home";
 
 const theme = createMuiTheme({
 	palette: {
@@ -29,7 +32,12 @@ const BaseLayout = () => (
 			<MuiThemeProvider theme={theme}>
 				<div>
 					<Switch>
-						<Route exact path="/" component={Template} />
+						<Route
+							exact
+							path="/"
+							render={(props) => <PrivateWrapper component={<Home {...props} />} />}
+						/>
+						<Route exact path="/signin" component={SignIN} />
 					</Switch>
 				</div>
 			</MuiThemeProvider>
