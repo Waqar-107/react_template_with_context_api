@@ -112,7 +112,8 @@ class SignIn extends React.Component {
 											this.setState({
 												showPassword: !showPassword,
 											})
-										}>
+										}
+									>
 										{showPassword ? <VisibilityOff /> : <Visibility />}
 									</IconButton>
 								</InputAdornment>
