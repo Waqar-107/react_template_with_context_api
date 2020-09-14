@@ -1,7 +1,7 @@
 import React from "react";
-import {withStyles} from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
-import {Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 import TextField from "@material-ui/core/TextField";
 import IconButton from "@material-ui/core/IconButton";
@@ -9,11 +9,11 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
-import {AuthConsumer} from "../../stateHandlers/authContext";
+import { AuthConsumer } from "../../stateHandlers/authContext";
 import * as translationBN from "../../../translations/bn";
 import * as translationEN from "../../../translations/en";
 
-import {postReq} from "../../axios/index";
+import { postReq } from "../../axios/index";
 import styles from "./signinStyles";
 import Navbar from "../../components/Navbar/Navbar";
 
@@ -33,37 +33,37 @@ class SignIn extends React.Component {
 	}
 
 	componentDidMount() {
-		const {language} = this.props;
-		if (language === "bn") this.setState({language: translationBN.signIn, current_lang: "bn"});
-		else this.setState({language: translationEN.signIn, current_lang: "en"});
+		const { language } = this.props;
+		if (language === "bn") this.setState({ language: translationBN.signIn, current_lang: "bn" });
+		else this.setState({ language: translationEN.signIn, current_lang: "en" });
 	}
 
 	componentDidUpdate() {
-		const {current_lang} = this.state;
+		const { current_lang } = this.state;
 
 		if (this.props.language !== current_lang) {
 			if (this.props.language === "bn")
-				this.setState({language: translationBN.signIn, current_lang: "bn"});
-			else this.setState({language: translationEN.signIn, current_lang: "en"});
+				this.setState({ language: translationBN.signIn, current_lang: "bn" });
+			else this.setState({ language: translationEN.signIn, current_lang: "en" });
 		}
 	}
 
 	handleChange = (name) => (event) => {
-		this.setState({[name]: event.target.value});
+		this.setState({ [name]: event.target.value });
 	};
 
 	handleLogin = () => {
-		const {email, password} = this.state;
+		const { email, password } = this.state;
 
 		postReq(
 			"/user/login",
-			{email, password},
+			{ email, password },
 			"",
 			(err, data) => {
 				console.log(err, data);
 				if (!err) {
 					this.props.login(data.user);
-					this.setState({authenticated: true});
+					this.setState({ authenticated: true });
 				}
 			},
 			true
@@ -71,8 +71,8 @@ class SignIn extends React.Component {
 	};
 
 	render() {
-		const {classes} = this.props;
-		const {language, email, password, showPassword, errors, authenticated} = this.state;
+		const { classes } = this.props;
+		const { language, email, password, showPassword, errors, authenticated } = this.state;
 
 		if (authenticated) return <Redirect to={"/"} />;
 
@@ -135,7 +135,7 @@ SignIn.propTypes = {
 
 const ConsumerComponent = (props) => (
 	<AuthConsumer>
-		{({language, login}) => <SignIn {...props} language={language} login={login} />}
+		{({ language, login }) => <SignIn {...props} language={language} login={login} />}
 	</AuthConsumer>
 );
 
