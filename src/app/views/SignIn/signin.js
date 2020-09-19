@@ -13,7 +13,7 @@ import { AuthConsumer } from "../../stateHandlers/authContext";
 import * as translationBN from "../../../translations/bn";
 import * as translationEN from "../../../translations/en";
 
-import { postReq } from "../../axios/index";
+import { login } from "../../axios/services/auth";
 import styles from "./signinStyles";
 import Navbar from "../../components/Navbar/Navbar";
 
@@ -55,19 +55,13 @@ class SignIn extends React.Component {
 	handleLogin = () => {
 		const { email, password } = this.state;
 
-		postReq(
-			"/user/login",
-			{ email, password },
-			"",
-			(err, data) => {
-				console.log(err, data);
-				if (!err) {
-					this.props.login(data.user);
-					this.setState({ authenticated: true });
-				}
-			},
-			true
-		);
+		login({email, password}, (err, data) => {
+			if(err) console.error("error in login", err);
+			else {
+				this.props.login(data.user);
+							this.setState({ authenticated: true });
+			}
+		})
 	};
 
 	render() {

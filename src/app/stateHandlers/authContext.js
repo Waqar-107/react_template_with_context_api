@@ -1,70 +1,63 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 
 export const AuthContext = React.createContext();
 
-export class AuthProvider extends React.Component {
-	constructor(props) {
-		super(props);
+export const AuthProvider =(props) => {
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const [language, handleLanguage] = useState('bn');
+	const [user, setUser] = useState({});
 
-		this.state = {
-			isAuthenticated: false,
-			user: {},
-			language: "bn",
-		};
-	}
-
-	checkAuth = () => {
+	const checkAuth = () => {
 		let user = localStorage.getItem("user");
 		let jwtToken = localStorage.getItem("jwtToken");
 		console.log(user, jwtToken);
 
 		if (jwtToken) {
-			this.setState({ user, isAuthenticated: true });
+			setIsAuthenticated(true);
+			setUser(user);
+
 			return true;
 		} else return false;
 	};
 
-	login = (user) => {
-		this.setState({ isAuthenticated: true });
-		this.setState({ user: user });
+	const login = (user) => {
+		setIsAuthenticated(isAuthenticated);
+		setUser(user);
 	};
 
-	logout = () => {
-		let { isAuthenticated, user } = this.state;
-
-		user = {};
-		isAuthenticated = false;
+	const logout = () => {
 		localStorage.removeItem("user");
 		localStorage.removeItem("jwtToken");
 
-		this.setState({ isAuthenticated, user });
+		setUser({});
+		setIsAuthenticated(false);
 	};
 
-	setLanguage = (lang, cb) => {
-		this.setState({ language: lang });
+	const setLanguage = (lang, cb) => {
+		handleLanguage(lang);
 		cb();
 	};
 
-	getLanguage = () => this.state.language;
+	const getLanguage = () => language;
 
-	render() {
 		return (
 			<AuthContext.Provider
 				value={{
-					...this.state,
-					checkAuth: this.checkAuth,
-					logout: this.logout,
-					login: this.login,
-					getLanguage: this.getLanguage,
-					setLanguage: this.setLanguage,
+					user: user,
+					language: language,
+					isAuthenticated: isAuthenticated,
+					checkAuth: checkAuth,
+					logout: logout,
+					login: login,
+					getLanguage: getLanguage,
+					setLanguage: setLanguage,
 				}}
 			>
-				{this.props.children}
+				{props.children}
 			</AuthContext.Provider>
 		);
 	}
-}
 
 AuthProvider.propTypes = {
 	children: PropTypes.object.isRequired,
