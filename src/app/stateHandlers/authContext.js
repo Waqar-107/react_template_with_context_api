@@ -1,11 +1,11 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 export const AuthContext = React.createContext();
 
-export const AuthProvider =(props) => {
+export const AuthProvider = (props) => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
-	const [language, handleLanguage] = useState('bn');
+	const [language, handleLanguage] = useState("bn");
 	const [user, setUser] = useState({});
 
 	const checkAuth = () => {
@@ -41,23 +41,23 @@ export const AuthProvider =(props) => {
 
 	const getLanguage = () => language;
 
-		return (
-			<AuthContext.Provider
-				value={{
-					user: user,
-					language: language,
-					isAuthenticated: isAuthenticated,
-					checkAuth: checkAuth,
-					logout: logout,
-					login: login,
-					getLanguage: getLanguage,
-					setLanguage: setLanguage,
-				}}
-			>
-				{props.children}
-			</AuthContext.Provider>
-		);
-	}
+	return (
+		<AuthContext.Provider
+			value={{
+				user: user,
+				language: language,
+				isAuthenticated: isAuthenticated,
+				checkAuth: checkAuth,
+				logout: logout,
+				login: login,
+				getLanguage: getLanguage,
+				setLanguage: setLanguage,
+			}}
+		>
+			{props.children}
+		</AuthContext.Provider>
+	);
+};
 
 AuthProvider.propTypes = {
 	children: PropTypes.object.isRequired,

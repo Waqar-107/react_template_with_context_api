@@ -28,7 +28,7 @@ export const postReq = (route, data, param, cb, setAuth) => {
 			if (setAuth) {
 				axios.defaults.headers.common["Authorization"] = res.data.token;
 				localStorage.setItem("jwtToken", res.data.token);
-				localStorage.setItem("user", res.data.user);
+				localStorage.setItem("user", JSON.stringify(res.data.user));
 			}
 			cb(null, res.data);
 		})

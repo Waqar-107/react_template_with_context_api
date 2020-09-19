@@ -1,4 +1,6 @@
-const styles = (theme) => ({
+import { makeStyles } from "@material-ui/core";
+
+const styles = makeStyles((theme) => ({
 	mainBody: {
 		width: "100%",
 		height: "100vh",
@@ -31,6 +33,6 @@ const styles = (theme) => ({
 		borderRadius: "5px",
 		cursor: "pointer",
 	},
-});
+}));
 
 export default styles;

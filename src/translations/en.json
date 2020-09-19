@@ -5,7 +5,7 @@
 
 	"signIn": {
 		"btn": "login",
-		"email": "email",
+		"phone": "phone",
 		"password": "password"
 	},
 

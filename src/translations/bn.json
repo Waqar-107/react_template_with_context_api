@@ -5,7 +5,7 @@
 
 	"signIn": {
 		"btn": "লগ ইন",
-		"email": "ইমেইল",
+		"phone": "ফোন",
 		"password": "পাসওয়ার্ড"
 	},
 	"home": {

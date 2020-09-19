@@ -5,7 +5,7 @@ import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { AuthProvider } from "../stateHandlers/authContext";
 import PrivateWrapper from "./privateWrapper";
 
-import SignIN from "../views/SignIn/signin";
+import SignIN from "../views/SignIn";
 import Home from "../views/Home/home";
 
 const theme = createMuiTheme({
