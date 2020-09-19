@@ -11,15 +11,16 @@ import styles from "./TemplateStyles";
 
 class Template extends React.Component {
 	constructor(props) {
-		super(props);
+		         super(props);
 		this.state = {
 			language: {},
-			current_lang: "bn",
+			          current_lang: "bn",
 		};
 	}
 
 	componentDidMount() {
 		const {language} = this.props;
+
 		if (language === "bn") this.setState({language: translationBN.template, current_lang: "bn"});
 		else this.setState({language: translationEN.template, current_lang: "en"});
 	}
@@ -30,18 +31,22 @@ class Template extends React.Component {
 		if (this.props.language !== current_lang) {
 			if (this.props.language === "bn")
 				this.setState({language: translationBN.template, current_lang: "bn"});
+
+
 			else this.setState({language: translationEN.template, current_lang: "en"});
 		}
 	}
 
 	render() {
-		const {classes} = this.props;
+		const {classes} = 
+		this.props;
 		const {language} = this.state;
 
 		return (
 			<div className={classes.mainBody}>
 				<Navbar />
-				<div>{language.title}</div>
+				<div>{language.title}
+				</div>
 			</div>
 		);
 	}

@@ -19,27 +19,30 @@ export class AuthProvider extends React.Component {
 		let jwtToken = localStorage.getItem("jwtToken");
 		console.log(user, jwtToken);
 
-		if (jwtToken !== undefined) {
-			this.setState({user, isAuthenticated: true});
+		if (jwtToken) {
+			this.setState({ user, isAuthenticated: true });
 			return true;
 		} else return false;
 	};
 
 	login = (user) => {
-		this.setState({isAuthenticated: true});
-		this.setState({user: user});
+		this.setState({ isAuthenticated: true });
+		this.setState({ user: user });
 	};
 
 	logout = () => {
-		let {isAuthenticated, user} = this.state;
+		let { isAuthenticated, user } = this.state;
+
 		user = {};
 		isAuthenticated = false;
+		localStorage.removeItem("user");
+		localStorage.removeItem("jwtToken");
 
-		this.setState({isAuthenticated, user});
+		this.setState({ isAuthenticated, user });
 	};
 
 	setLanguage = (lang, cb) => {
-		this.setState({language: lang});
+		this.setState({ language: lang });
 		cb();
 	};
 
@@ -55,7 +58,8 @@ export class AuthProvider extends React.Component {
 					login: this.login,
 					getLanguage: this.getLanguage,
 					setLanguage: this.setLanguage,
-				}}>
+				}}
+			>
 				{this.props.children}
 			</AuthContext.Provider>
 		);
