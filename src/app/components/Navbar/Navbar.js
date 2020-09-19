@@ -1,8 +1,8 @@
 import React from "react";
-import {withStyles} from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 import PropTypes from "prop-types";
 
-import {AuthConsumer} from "../../stateHandlers/authContext";
+import { AuthConsumer } from "../../stateHandlers/authContext";
 
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -19,22 +19,22 @@ class Navbar extends React.Component {
 	}
 
 	languageToggler = (lang) => {
-		const {setLanguage} = this.props;
+		const { setLanguage } = this.props;
 		setLanguage(lang, () => {});
 		this.handleClose();
 	};
 
 	handleClick = (event) => {
-		this.setState({anchorEl: event.currentTarget});
+		this.setState({ anchorEl: event.currentTarget });
 	};
 
 	handleClose = (lang) => {
-		this.setState({anchorEl: null});
+		this.setState({ anchorEl: null });
 	};
 
 	render() {
-		const {classes} = this.props;
-		const {anchorEl} = this.state;
+		const { classes } = this.props;
+		const { anchorEl } = this.state;
 
 		return (
 			<div className={classes.mainBody}>
@@ -45,7 +45,8 @@ class Navbar extends React.Component {
 						anchorEl={anchorEl}
 						keepMounted
 						open={Boolean(anchorEl)}
-						onClose={this.handleClose}>
+						onClose={this.handleClose}
+					>
 						<MenuItem onClick={() => this.languageToggler("bn")} className={classes.langMenuItem}>
 							বাংলা
 						</MenuItem>
@@ -64,7 +65,9 @@ Navbar.propTypes = {
 };
 
 const ConsumerComponent = (props) => (
-	<AuthConsumer>{({setLanguage}) => <Navbar {...props} setLanguage={setLanguage} />}</AuthConsumer>
+	<AuthConsumer>
+		{({ setLanguage }) => <Navbar {...props} setLanguage={setLanguage} />}
+	</AuthConsumer>
 );
 
 export default withStyles(styles)(ConsumerComponent);
