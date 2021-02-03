@@ -10,3 +10,6 @@
 
 ### get value from the url
 const id = this.props.match.params.id;
+
+
+### when using spacing={} with material ui Grid, always use `margin: auto` as style for the container
