@@ -1,9 +1,9 @@
-# a react template with context api
+# A react template with context api
 
-1. the authContext maintains the auth and also the language of the site
-2. the navbar contains the language changing dropdown
-3. the PrivateWrapper can be used for views that are only accessible when the user is authenticated
-4. the signin is functional, change the ui according to the need of the project
+1. The authContext maintains the auth
+2. The PrivateWrapper can be used for views that are only accessible when the user is authenticated
+3. The authContext has a jwt verifier that checks if the jwt is expired or not. I have made the jwt expired before 5 minutes of the actual expiry time.
+4. The signin is functional, change the ui according to the need of the project
 
 # important things i forget
 
@@ -25,6 +25,8 @@ const id = this.props.match.params.id;
 // in the other component you redirected to
 const { location } = props.location.state;
 ```
+
+### material ui grid
 
 ```js
 <div className={classes.gridroot}>
