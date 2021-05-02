@@ -31,6 +31,7 @@ export const postReq = (route, data, param, cb, setAuth) => {
 				localStorage.setItem("jwtTokenExpiryDate", res.data.jwtTokenExpiryDate);
 				localStorage.setItem("user", JSON.stringify(res.data.user));
 			}
+
 			cb(null, res.data);
 		})
 		.catch((err) => {

@@ -10,7 +10,6 @@ class PrivateComponent extends Component {
 	};
 
 	componentDidMount() {
-		console.log(this.props.checkAuth());
 		if (this.props.checkAuth()) this.setState({ status: true });
 		else this.setState({ status: false });
 	}

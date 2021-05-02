@@ -9,17 +9,19 @@ export const AuthProvider = (props) => {
 
 	const checkAuth = () => {
 		let user = localStorage.getItem("user");
-		let jwtToken = localStorage.getItem("jwtToken");
 		let jwtTokenExpiryDate = localStorage.getItem("jwtTokenExpiryDate");
 
-		console.log(user, jwtToken, jwtTokenExpiryDate, typeof jwtTokenExpiryDate);
-
-		if (jwtToken) {
+		if (jwtTokenExpiryDate && isJwtValid()) {
 			setIsAuthenticated(true);
 			setUser(user);
 
 			return true;
 		} else return false;
+	};
+
+	const isJwtValid = () => {
+		let jwtTokenExpiryDate = localStorage.getItem("jwtTokenExpiryDate");
+		return Date.now() + 5 * 60 * 1000 < jwtTokenExpiryDate;
 	};
 
 	const login = (user) => {
