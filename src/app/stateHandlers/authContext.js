@@ -19,6 +19,9 @@ export const AuthProvider = (props) => {
 		} else return false;
 	};
 
+	// invalidate a jwt before 5 minutes as there can be situation where,
+	// the user enters a protected page when the jwt is verified but when posts something
+	// the jwt expires. this shall give error.
 	const isJwtValid = () => {
 		let jwtTokenExpiryDate = localStorage.getItem("jwtTokenExpiryDate");
 		return Date.now() + 5 * 60 * 1000 < jwtTokenExpiryDate;
