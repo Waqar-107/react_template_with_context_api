@@ -5,22 +5,22 @@
 3. the PrivateWrapper can be used for views that are only accessible when the user is authenticated
 4. the signin is functional, change the ui according to the need of the project
 
-
-# important things i forget 
+# important things i forget
 
 ### get value from the url
+
 const id = this.props.match.params.id;
 
-
 ### pass value through links
+
 ```js
 // in the redirecting component
 <Redirect
-to={{
-  pathname: '/login',
-  state: { from: location }
-}}
-/>
+	to={{
+		pathname: "/login",
+		state: { from: location },
+	}}
+/>;
 
 // in the other component you redirected to
 const { location } = props.location.state;
@@ -41,3 +41,5 @@ gridroot: {
 	flexGrow: 1,
 },
 ```
+
+### when using spacing={} with material ui Grid, always use `margin: auto` as style for the container
