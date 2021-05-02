@@ -5,13 +5,14 @@ export const AuthContext = React.createContext();
 
 export const AuthProvider = (props) => {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
-	const [language, handleLanguage] = useState("bn");
 	const [user, setUser] = useState({});
 
 	const checkAuth = () => {
 		let user = localStorage.getItem("user");
 		let jwtToken = localStorage.getItem("jwtToken");
-		console.log(user, jwtToken);
+		let jwtTokenExpiryDate = localStorage.getItem("jwtTokenExpiryDate");
+
+		console.log(user, jwtToken, jwtTokenExpiryDate, typeof jwtTokenExpiryDate);
 
 		if (jwtToken) {
 			setIsAuthenticated(true);
@@ -29,29 +30,20 @@ export const AuthProvider = (props) => {
 	const logout = () => {
 		localStorage.removeItem("user");
 		localStorage.removeItem("jwtToken");
+		localStorage.removeItem("jwtTokenExpiryDate");
 
 		setUser({});
 		setIsAuthenticated(false);
 	};
 
-	const setLanguage = (lang, cb) => {
-		handleLanguage(lang);
-		cb();
-	};
-
-	const getLanguage = () => language;
-
 	return (
 		<AuthContext.Provider
 			value={{
 				user: user,
-				language: language,
 				isAuthenticated: isAuthenticated,
 				checkAuth: checkAuth,
 				logout: logout,
 				login: login,
-				getLanguage: getLanguage,
-				setLanguage: setLanguage,
 			}}
 		>
 			{props.children}

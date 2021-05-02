@@ -1,5 +1,5 @@
 const styles = (theme) => ({
-	mainBody: {
+	root: {
 		color: theme.palette.colors.primary,
 	},
 });

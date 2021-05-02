@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Loading from "../components/Loading/loading";
+import Loading from "../components/Loading";
 import { Redirect } from "react-router-dom";
 
 import { AuthConsumer } from "../stateHandlers/authContext";
