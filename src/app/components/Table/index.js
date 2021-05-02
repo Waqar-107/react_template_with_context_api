@@ -40,8 +40,7 @@ const GenericTable = (props) => {
 								<div
 									className={classes.singleCell}
 									{...column.getHeaderProps()}
-									style={{ fontWeight: 600, width: widthList[idx] }}
-								>
+									style={{ fontWeight: 600, width: widthList[idx] }}>
 									{column.render("Header")}
 								</div>
 							))}
@@ -63,15 +62,13 @@ const GenericTable = (props) => {
 										: i === limit - 1
 										? { borderBottom: "none" }
 										: {}
-								}
-							>
+								}>
 								{row.cells.map((cell, idx) => {
 									return (
 										<div
 											className={classes.singleCell}
 											{...cell.getCellProps()}
-											style={{ width: widthList[idx] }}
-										>
+											style={{ width: widthList[idx] }}>
 											{cell.render("Cell")}
 										</div>
 									);

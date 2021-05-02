@@ -49,8 +49,7 @@ export const AuthProvider = (props) => {
 				checkAuth: checkAuth,
 				logout: logout,
 				login: login,
-			}}
-		>
+			}}>
 			{props.children}
 		</AuthContext.Provider>
 	);

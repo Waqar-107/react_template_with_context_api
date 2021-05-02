@@ -76,8 +76,7 @@ const SignIn = (props) => {
 								<IconButton
 									edge="end"
 									aria-label="Toggle password visibility"
-									onClick={() => setField({ ...field, showPassword: !field.showPassword })}
-								>
+									onClick={() => setField({ ...field, showPassword: !field.showPassword })}>
 									{field.showPassword ? <VisibilityOff /> : <Visibility />}
 								</IconButton>
 							</InputAdornment>
