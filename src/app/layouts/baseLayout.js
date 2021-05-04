@@ -8,7 +8,6 @@ import ErrorBoundary from "../util/errorBoundary";
 
 import Loading from "../components/Loading";
 import SignIn from "../views/SignIn";
-//import Template from "../views/Template";
 const Home = lazy(() => import("../views/Home"));
 const NotFound = lazy(() => import("../views/NotFound"));
 const Template = lazy(() => import("../views/Template"));
@@ -38,8 +37,14 @@ const BaseLayout = () => (
 									path="/"
 									render={(props) => <PrivateWrapper component={<Home {...props} />} />}
 								/>
+
+								<Route
+									exact
+									path="/template"
+									render={(props) => <PrivateWrapper component={<Template {...props} />} />}
+								/>
 								<Route exact path="/signin" component={SignIn} />
-								<Route exact path="/template" component={Template} />
+								{/* <Route exact path="/template" component={Template} /> */}
 								<Route exact path="*" component={NotFound} />
 							</Switch>
 						</div>

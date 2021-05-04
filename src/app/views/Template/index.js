@@ -3,7 +3,6 @@ import styles from "./styles";
 
 const Template = () => {
 	const classes = styles();
-
 	return <div className={classes.root}>template page</div>;
 };
 
